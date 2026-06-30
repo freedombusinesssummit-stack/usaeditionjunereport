@@ -230,12 +230,13 @@ export default function FBSPartnerReport() {
               Virtual Event · 28–29 June 2026
             </span>
             <span className="hero-badge">Post-Event Analytics Report</span>
+            <span className="hero-badge edition">🏅 2nd Edition</span>
           </div>
           <h3 className="hero-eyebrow">Freedom Business Summit 2026</h3>
           <h1>America Mobility Edition <span className="flag-lg">🇺🇸</span></h1>
           <h4 className="hero-tagline">Data-Driven Partner Intelligence</h4>
           <div className="hero-desc-wrap">
-            <p className="hero-desc-1">Real audience data, intent signals, and partner opportunity summary from the June 2026 USA virtual summit.</p>
+            <p className="hero-desc-1">Real audience data, intent signals, and partner opportunity summary from the <strong>2nd edition</strong> of the USA virtual summit — our second US Mobility event, following the March 2026 edition.</p>
             <p className="hero-desc-2">Built for immigration firms, CBI agents, and relocation partners. Every data point reflects real engagement from people actively planning their global mobility move.</p>
           </div>
           <div className="hero-cta">
@@ -753,6 +754,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-f
 .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
 .hero-badge{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;border:1.5px solid var(--border);border-radius:999px;padding:6px 14px;color:var(--muted);}
 .hero-badge.green{border-color:#bbf7d0;color:#15803d;background:#f0fdf4;}
+.hero-badge.edition{border-color:#e0e7ff;color:#4338ca;background:#eef2ff;font-weight:700;}
 .hero-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;}
 .hero-dot.pulse{animation:dotPulse 2.2s ease-in-out infinite;}
 @keyframes dotPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.4);}50%{opacity:.7;box-shadow:0 0 0 5px rgba(34,197,94,0);}}
