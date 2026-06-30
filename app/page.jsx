@@ -64,22 +64,22 @@ const TIMELINE = [
 
 const DEEP_DIVES = [
   {
-    flag: "🇲🇹", name: "Malta", n: "42% · n = 38", split: "15 US · 23 non-US",
+    flag: "🇲🇹", name: "Malta", n: "42%", split: "15 US · 23 non-US",
     outbound: "82% outbound", ready: "37% near-term ready",
     play: "Premium European track. More citizenship-serious than Portugal's real-estate browsers. Route the move-ready subset to partners immediately.",
   },
   {
-    flag: "🇵🇹", name: "Portugal", n: "38% · n = 35", split: "14 US · 21 non-US",
+    flag: "🇵🇹", name: "Portugal", n: "38%", split: "14 US · 21 non-US",
     outbound: "83% outbound", ready: "29% near-term ready",
     play: "The broad-appeal anchor. Widest top-of-funnel pull with longest decision fuse. Pair with real-estate ROI content.",
   },
   {
-    flag: "🏝", name: "Caribbean / Grenada", n: "31% · n = 28", split: "16 US · 12 non-US",
+    flag: "🏝", name: "Caribbean / Grenada", n: "31%", split: "16 US · 12 non-US",
     outbound: "89% outbound", ready: "36% near-term ready",
     play: "The American passport-hedge — most US-skewed segment. Lead with speed-to-passport and the E-2 treaty route into the US.",
   },
   {
-    flag: "🇺🇸", name: "US Residency (EB-5 / E-2)", n: "24% · n = 22", split: "1 US · 21 non-US",
+    flag: "🇺🇸", name: "US Residency (EB-5 / E-2)", n: "24%", split: "1 US · 21 non-US",
     outbound: "Inbound — 18 of 22", ready: "36% near-term ready",
     play: "The inbound engine — almost entirely foreign nationals. Requires a separate funnel, separate copy, and dedicated partners.",
   },
