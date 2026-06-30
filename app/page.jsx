@@ -256,39 +256,90 @@ export default function FBSPartnerReport() {
         </div>
       </div>
 
+      {/* ── 00 REPORT SUMMARY ── */}
+      <Sec id="overview" num="00" badge="📋 Report Summary"
+        title="What This Report Covers"
+        lead="Post-event intelligence from the Freedom Business Summit 2026 — USA Edition. 91 completed intent surveys, scored and segmented across jurisdiction, timeline, financial readiness and role.">
+        <div className="overview-banner">
+          <div className="ob-item">
+            <div className="ob-num">91</div>
+            <div className="ob-lbl">📝 Qualified Surveys</div>
+          </div>
+          <div className="ob-div" />
+          <div className="ob-item">
+            <div className="ob-num">2</div>
+            <div className="ob-lbl">📅 Event Days</div>
+          </div>
+          <div className="ob-div" />
+          <div className="ob-item">
+            <div className="ob-num">6</div>
+            <div className="ob-lbl">🌍 Jurisdictions Tracked</div>
+          </div>
+          <div className="ob-div" />
+          <div className="ob-item">
+            <div className="ob-num">31</div>
+            <div className="ob-lbl">🔥 Hot-Tier Leads</div>
+          </div>
+          <div className="ob-div" />
+          <div className="ob-item">
+            <div className="ob-num">10</div>
+            <div className="ob-lbl">📊 Report Sections</div>
+          </div>
+        </div>
+        <div className="overview-highlights">
+          <div className="oh-card">
+            <div className="oh-icon">🎯</div>
+            <div className="oh-title">Pre-Qualified Cohort</div>
+            <div className="oh-text">Every respondent completed a full intent survey. No raw registrations — only people who actively shared their goals, budget stage, and jurisdiction preferences.</div>
+          </div>
+          <div className="oh-card">
+            <div className="oh-icon">📊</div>
+            <div className="oh-title">Scored & Tiered</div>
+            <div className="oh-text">Each submission carries a 0–73 lead score. Hot (49+), Warm (36–48), Qualified (25–35), and Nurture (&lt;25) tiers are ready for partner routing on day one.</div>
+          </div>
+          <div className="oh-card">
+            <div className="oh-icon">🤝</div>
+            <div className="oh-title">Partner Intelligence</div>
+            <div className="oh-text">Built for immigration firms, CBI agents, and structuring specialists. Every section maps data directly to partner opportunity — with a recommended play for each segment.</div>
+          </div>
+        </div>
+      </Sec>
+
+      <div className="divider" />
+
       {/* ── 01 EXECUTIVE SUMMARY ── */}
-      <Sec id="summary" num="01" badge="📊 Executive Summary"
-        title="A Concentrated, Pre-Qualified Cohort — Not Raw Traffic"
+      <Sec id="summary" num="01" badge="📊 Key Metrics" shaded
+        title="Six Numbers That Define This Audience"
         lead="91 deep-intent submissions from founders, owners and C-suite professionals actively planning a global mobility move. The median respondent is 9 to 12 months from action, building a budget, and pulled in by a single promise: a second residency or passport.">
         <div className="snapshot-grid">
           <div className="snap-card snap-card--dark">
             <div className="snap-num"><CountUp value={82} suffix="%" /></div>
-            <div className="snap-lbl">End-clients actively seeking trusted providers</div>
+            <div className="snap-lbl">🤝 End-clients actively seeking trusted providers</div>
             <div className="snap-sub">Only 18% are supply-side. That ratio is the FBS Intelligence value proposition.</div>
           </div>
           <div className="snap-card">
-            <div className="snap-num c-green"><CountUp value={87} suffix="%" /></div>
-            <div className="snap-lbl">Pre-committed to post-summit playbooks</div>
+            <div className="snap-num"><CountUp value={87} suffix="%" /></div>
+            <div className="snap-lbl">📚 Pre-committed to post-summit playbooks</div>
             <div className="snap-sub">Strongest single consensus in the dataset.</div>
           </div>
           <div className="snap-card">
-            <div className="snap-num c-green"><CountUp value={55} suffix="%" /></div>
-            <div className="snap-lbl">Founders, owners & C-suite</div>
+            <div className="snap-num"><CountUp value={55} suffix="%" /></div>
+            <div className="snap-lbl">👑 Founders, owners & C-suite</div>
             <div className="snap-sub">Direct buying authority — no procurement committee.</div>
           </div>
           <div className="snap-card">
-            <div className="snap-num c-green"><CountUp value={74} suffix="%" /></div>
-            <div className="snap-lbl">Outbound / global mobility focus</div>
+            <div className="snap-num"><CountUp value={74} suffix="%" /></div>
+            <div className="snap-lbl">🌍 Outbound / global mobility focus</div>
             <div className="snap-sub">26% are inbound to the US via EB-5 / E-2.</div>
           </div>
           <div className="snap-card">
-            <div className="snap-num c-green"><CountUp value={34} suffix="%" /></div>
-            <div className="snap-lbl">Near-term or move-ready (3–9 months)</div>
-            <div className="snap-sub">~31 respondents ready for immediate partner hand-off.</div>
+            <div className="snap-num"><CountUp value={34} suffix="%" /></div>
+            <div className="snap-lbl">⚡ Near-term or move-ready (3–9 months)</div>
+            <div className="snap-sub">Ready for immediate partner hand-off.</div>
           </div>
           <div className="snap-card">
-            <div className="snap-num c-green"><CountUp value={58} suffix="%" /></div>
-            <div className="snap-lbl">Top demand: second residency or citizenship</div>
+            <div className="snap-num"><CountUp value={58} suffix="%" /></div>
+            <div className="snap-lbl">✈️ Top demand: second residency or citizenship</div>
             <div className="snap-sub">51% also want borderless-business help — the key combination.</div>
           </div>
         </div>
@@ -745,13 +796,24 @@ h2{font-size:clamp(26px,3.8vw,40px);font-weight:900;letter-spacing:-.03em;line-h
 .snap-card{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:26px 24px;transition:transform .2s,box-shadow .2s,border-color .2s;}
 .snap-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.06);border-color:#86efac;}
 .snap-card--dark{background:var(--ink-2);border-color:var(--ink-2);}
-.snap-num{font-size:clamp(36px,5vw,50px);font-weight:900;letter-spacing:-.04em;line-height:1;color:var(--muted);margin-bottom:10px;}
+.snap-num{font-size:clamp(36px,5vw,50px);font-weight:900;letter-spacing:-.04em;line-height:1;color:var(--ink);margin-bottom:10px;}
 .snap-card--dark .snap-num{color:var(--green);}
-.snap-num.c-green{color:var(--green-dark);}
 .snap-lbl{font-size:14px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:6px;}
 .snap-card--dark .snap-lbl{color:#fff;}
 .snap-sub{font-size:13px;color:var(--muted);line-height:1.4;}
 .snap-card--dark .snap-sub{color:rgba(255,255,255,.55);}
+
+/* OVERVIEW SECTION */
+.overview-banner{display:flex;align-items:center;background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:32px;margin-bottom:20px;flex-wrap:wrap;gap:0;}
+.ob-item{flex:1;min-width:100px;text-align:center;}
+.ob-num{font-size:clamp(32px,4vw,46px);font-weight:900;letter-spacing:-.04em;color:var(--ink);line-height:1;margin-bottom:8px;}
+.ob-lbl{font-size:13px;color:var(--muted);font-weight:600;line-height:1.3;}
+.ob-div{width:1px;height:60px;background:var(--border);margin:0 8px;flex-shrink:0;}
+.overview-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.oh-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:24px;}
+.oh-icon{font-size:24px;margin-bottom:12px;}
+.oh-title{font-size:16px;font-weight:800;color:var(--ink);margin-bottom:8px;}
+.oh-text{font-size:14px;color:var(--muted);line-height:1.6;}
 
 /* DIRECTION CARDS */
 .dir-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
@@ -932,6 +994,9 @@ footer p{font-size:13px;color:rgba(255,255,255,.35);}
 
 /* RESPONSIVE */
 @media(max-width:880px){
+  .overview-highlights{grid-template-columns:1fr;}
+  .ob-div{display:none;}
+  .ob-item{padding:12px 0;}
   .snapshot-grid,.fin-top-grid,.fin-bottom-grid{grid-template-columns:1fr 1fr;}
   .dir-cards,.juris-grid,.pipeline-split{grid-template-columns:1fr;}
   .tier-grid,.strat-grid{grid-template-columns:1fr 1fr;}
