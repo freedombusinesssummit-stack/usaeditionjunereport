@@ -328,6 +328,7 @@ export default function FBSPartnerReport() {
               <span className="jr-rank">#{i + 1}</span>
               <span className="jr-flag">{j.flag}</span>
               <span className="jr-label">{j.label}</span>
+              <span className="jr-pct">{j.pct}%</span>
               <div className="jr-bar-wrap">
                 <Bar label="" pct={j.pct} />
               </div>
@@ -753,11 +754,12 @@ h2{font-size:clamp(26px,3.8vw,40px);font-weight:900;letter-spacing:-.03em;line-h
 
 /* JURISDICTION RANKED */
 .juris-ranked{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:24px 26px;margin-bottom:16px;}
-.jr-row{display:grid;grid-template-columns:28px 28px 1fr 200px;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.jr-row{display:grid;grid-template-columns:28px 28px 1fr 48px 200px;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
 .jr-row:last-child{border-bottom:none;}
 .jr-rank{font-size:12px;font-weight:800;color:var(--muted-2);}
 .jr-flag{font-size:18px;}
 .jr-label{font-size:14px;font-weight:600;color:var(--ink);}
+.jr-pct{font-size:15px;font-weight:900;color:var(--green-dark);font-variant-numeric:tabular-nums;text-align:right;}
 .jr-bar-wrap .bar-row{margin-bottom:0;}
 .jr-bar-wrap .bar-top{display:none;}
 .jr-bar-wrap .bar-track{height:8px;}
@@ -925,7 +927,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.35);}
   .hero-stats{flex-direction:column;gap:22px;}
   .hs-div{width:100%;height:1px;margin:0;}
   .hs-item{padding:0;}
-  .jr-row{grid-template-columns:28px 28px 1fr;gap:8px;}
+  .jr-row{grid-template-columns:28px 28px 1fr 48px;gap:8px;}
   .jr-bar-wrap{display:none;}
   .jr-row .bar-row{margin-bottom:0;}
 }
