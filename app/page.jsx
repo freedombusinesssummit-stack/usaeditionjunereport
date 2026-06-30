@@ -101,11 +101,31 @@ const ROLES = [
 ];
 
 const INDUSTRIES = [
-  { flag: "📊", label: "Professional Services, Legal & Finance", pct: 35, note: "Consulting, legal, finance, marketing" },
-  { flag: "✈️", label: "Hospitality, Travel, Education & Creative", pct: 26, note: "Tourism, EdTech, events, journalism" },
-  { flag: "💻", label: "Tech, Engineering & Software", pct: 19, note: "Software, IT, automation, crypto / AI" },
-  { flag: "🏠", label: "Real Estate, Property & Construction", pct: 14, note: "Development, property, construction" },
-  { flag: "🏥", label: "Healthcare & Wellness", pct: 5, note: "Medicine, mental health, wellness" },
+  {
+    flag: "📊", label: "Professional Services, Legal & Finance", pct: 35,
+    color: "#eef2ff", border: "#c7d2fe",
+    tags: ["Management Consulting", "Immigration Law", "Corporate Legal", "Tax Advisory", "Investment Banking", "Financial Planning", "Marketing & PR", "International Trade"],
+  },
+  {
+    flag: "✈️", label: "Hospitality, Travel, Education & Creative", pct: 26,
+    color: "#fdf4ff", border: "#e9d5ff",
+    tags: ["Tourism & Hospitality", "EdTech Platforms", "Events & Conferences", "Journalism & Media", "Charter & Aviation", "Language Schools", "Online Courses"],
+  },
+  {
+    flag: "💻", label: "Tech, Engineering & Software", pct: 19,
+    color: "#f0fdf4", border: "#bbf7d0",
+    tags: ["Software Development", "IT Infrastructure", "AI & Automation", "Crypto / Web3", "Robotics", "Product Management", "DevOps & Cloud"],
+  },
+  {
+    flag: "🏠", label: "Real Estate, Property & Construction", pct: 14,
+    color: "#fff7ed", border: "#fed7aa",
+    tags: ["Property Development", "Commercial Real Estate", "Construction Management", "PropTech", "Golden Visa Projects", "LATAM & EU Markets"],
+  },
+  {
+    flag: "🏥", label: "Healthcare & Wellness", pct: 5,
+    color: "#fff1f2", border: "#fecdd3",
+    tags: ["Medical Practice", "Mental Health", "Wellness & Coaching", "MedTech", "Cardiology", "Healthcare Admin"],
+  },
 ];
 
 const KEY_FINDINGS = [
@@ -182,6 +202,46 @@ function Takeaway({ children }) {
       <div>
         <div className="kt-label">Key Takeaway</div>
         <div className="kt-text">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+function IntentBar({ rank, flag, label, pct, max }) {
+  const [ref, seen] = useInView(0.2);
+  const widthPct = (pct / max) * 100;
+  const isTop = rank <= 2;
+  return (
+    <div className={"ibar" + (isTop ? " ibar--top" : "")} ref={ref}>
+      <div className="ibar-meta">
+        <span className="ibar-rank">#{rank}</span>
+        <span className="ibar-flag">{flag}</span>
+        <span className="ibar-label">{label}</span>
+        <span className="ibar-pct">{pct}%</span>
+      </div>
+      <div className="ibar-track">
+        <div className="ibar-fill" style={{ width: seen ? `${widthPct}%` : "0%", transition: "width 1.1s cubic-bezier(.4,0,.2,1)" }} />
+      </div>
+    </div>
+  );
+}
+
+function IndCard({ flag, label, pct, tags, color, border }) {
+  const [ref, seen] = useInView(0.15);
+  return (
+    <div className={"ind-card" + (seen ? " ind-card--in" : "")} ref={ref} style={{ "--ind-color": color, "--ind-border": border }}>
+      <div className="ind-card-head">
+        <div className="ind-card-left">
+          <span className="ind-card-emoji">{flag}</span>
+          <span className="ind-card-name">{label}</span>
+        </div>
+        <div className="ind-card-pct">{pct}%</div>
+      </div>
+      <div className="ind-bar-track">
+        <div className="ind-bar-fill" style={{ width: seen ? `${pct}%` : "0%", transition: "width 1.1s cubic-bezier(.4,0,.2,1)" }} />
+      </div>
+      <div className="ind-tags">
+        {tags.map((t) => <span key={t} className="ind-tag">{t}</span>)}
       </div>
     </div>
   );
@@ -531,13 +591,9 @@ export default function FBSPartnerReport() {
       <Sec id="intent" num="06" badge="💡 Core Intent" shaded
         title="What They Came to Find"
         lead="Priority needs are multi-select, as a share of all 91 respondents. The headline magnet is a second passport — but borderless-business help is right behind it and easy to underestimate.">
-        <div className="intent-list">
+        <div className="intent-viz">
           {PRIORITY_NEEDS.map((b, i) => (
-            <div className="intent-row" key={b.label}>
-              <div className="intent-rank">#{i + 1}</div>
-              <div className="intent-pct">{b.pct}%</div>
-              <div className="intent-lbl">{b.flag} {b.label}</div>
-            </div>
+            <IntentBar key={b.label} rank={i + 1} flag={b.flag} label={b.label} pct={b.pct} max={58} />
           ))}
         </div>
         <Takeaway>
@@ -604,18 +660,9 @@ export default function FBSPartnerReport() {
         </div>
 
         <div className="panel-title" style={{marginTop:"32px",marginBottom:"16px"}}>🏭 Industry Breakdown</div>
-        <div className="industry-list">
+        <div className="ind-cards">
           {INDUSTRIES.map((b) => (
-            <div className="ind-row" key={b.label}>
-              <div className="ind-left">
-                <span className="ind-emoji">{b.flag}</span>
-                <span className="ind-name">{b.label}</span>
-              </div>
-              <div className="ind-right">
-                <div className="ind-pct">{b.pct}%</div>
-                <div className="ind-note">{b.note}</div>
-              </div>
-            </div>
+            <IndCard key={b.label} {...b} />
           ))}
         </div>
 
@@ -892,13 +939,22 @@ h2{font-size:clamp(26px,3.8vw,40px);font-weight:900;letter-spacing:-.03em;line-h
 .strat-card:not(.strat-card--accent) .strat-pct{color:var(--muted);}
 .strat-lbl{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.4;}
 
-/* INTENT */
-.intent-list{margin-bottom:16px;}
-.intent-row{display:grid;grid-template-columns:28px 64px 1fr;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);}
-.intent-row:first-child{border-top:1px solid var(--border);}
-.intent-rank{font-size:12px;font-weight:800;color:var(--muted-2);}
-.intent-pct{font-size:22px;font-weight:900;letter-spacing:-.03em;color:var(--green-dark);font-variant-numeric:tabular-nums;}
-.intent-lbl{font-size:15px;color:var(--ink);line-height:1.4;}
+/* INTENT VIZ */
+.intent-viz{margin-bottom:16px;background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:8px 24px;}
+.ibar{padding:16px 0;border-bottom:1px solid var(--border);}
+.ibar:last-child{border-bottom:none;}
+.ibar--top .ibar-label{font-weight:800;color:var(--ink);}
+.ibar--top .ibar-pct{color:var(--ink);}
+.ibar-meta{display:grid;grid-template-columns:28px 28px 1fr 52px;align-items:center;gap:12px;margin-bottom:10px;}
+.ibar-rank{font-size:12px;font-weight:800;color:var(--muted-2);}
+.ibar-flag{font-size:18px;}
+.ibar-label{font-size:14.5px;font-weight:600;color:var(--ink);}
+.ibar-pct{font-size:18px;font-weight:900;color:var(--green-dark);text-align:right;font-variant-numeric:tabular-nums;}
+.ibar--top .ibar-pct{font-size:22px;color:var(--ink);}
+.ibar-track{height:10px;background:#f3f4f6;border-radius:999px;overflow:hidden;}
+.ibar--top .ibar-track{height:14px;}
+.ibar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--green-dark),var(--green));}
+.ibar--top .ibar-fill{background:linear-gradient(90deg,var(--ink),#374151);}
 
 /* JURISDICTION CARDS */
 .juris-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
@@ -936,16 +992,20 @@ h2{font-size:clamp(26px,3.8vw,40px);font-weight:900;letter-spacing:-.03em;line-h
 .role-lbl{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;}
 .role-note{font-size:12px;color:var(--muted);line-height:1.35;}
 
-/* INDUSTRY */
-.industry-list{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:16px;}
-.ind-row{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--border);gap:16px;}
-.ind-row:last-child{border-bottom:none;}
-.ind-left{display:flex;align-items:center;gap:12px;}
-.ind-emoji{font-size:20px;}
-.ind-name{font-size:14.5px;font-weight:700;color:var(--ink);}
-.ind-right{text-align:right;flex-shrink:0;}
-.ind-pct{font-size:20px;font-weight:900;color:var(--green-dark);letter-spacing:-.03em;}
-.ind-note{font-size:12px;color:var(--muted);margin-top:2px;}
+/* INDUSTRY CARDS */
+.ind-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.ind-card{background:var(--ind-color,#fff);border:1.5px solid var(--ind-border,var(--border));border-radius:18px;padding:22px 24px;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease;}
+.ind-card.ind-card--in{opacity:1;transform:none;}
+.ind-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.ind-card-left{display:flex;align-items:center;gap:12px;}
+.ind-card-emoji{font-size:22px;}
+.ind-card-name{font-size:15px;font-weight:800;color:var(--ink);}
+.ind-card-pct{font-size:28px;font-weight:900;letter-spacing:-.04em;color:var(--ink);}
+.ind-bar-track{height:6px;background:rgba(0,0,0,.07);border-radius:999px;overflow:hidden;margin-bottom:14px;}
+.ind-bar-fill{height:100%;border-radius:999px;background:var(--ink);opacity:.25;}
+.ind-card:first-child .ind-bar-fill{opacity:1;background:var(--green-dark);}
+.ind-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.ind-tag{font-size:12px;font-weight:600;color:var(--ink);background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.09);border-radius:999px;padding:4px 11px;}
 
 /* FINDINGS */
 .findings-list{margin-bottom:16px;}
@@ -1017,7 +1077,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.35);}
   .snapshot-grid,.fin-top-grid,.fin-bottom-grid,.tier-grid,.strat-grid,.roles-grid{grid-template-columns:1fr;}
   .intent-row{grid-template-columns:28px 50px 1fr;gap:10px;}
   .roles-banner{flex-direction:column;text-align:center;}
-  .ind-note{display:none;}
+  .ibar-meta{grid-template-columns:24px 24px 1fr 44px;gap:8px;}
 }
 @media(prefers-reduced-motion:reduce){
   .sec{transition:none;opacity:1;transform:none;}
