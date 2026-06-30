@@ -22,7 +22,7 @@ const JURISDICTION_INTEREST = [
 
 const FINANCIAL_READINESS = [
   { label: "Planning a Budget", pct: 59, sub: "Liquid capital, active due diligence on allocation", dark: true },
-  { label: "Not Ready Yet", pct: 27, sub: "Watching the macro, setting milestones first", dark: false },
+  { label: "Exploring Options", pct: 27, sub: "Watching the macro, setting milestones first", dark: false },
   { label: "Ready to Invest", pct: 11, sub: "Trigger-ready, seeking the right framework", dark: false },
 ];
 
