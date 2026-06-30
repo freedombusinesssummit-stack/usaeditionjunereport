@@ -26,6 +26,12 @@ const FINANCIAL_READINESS = [
   { label: "Ready to Invest", pct: 11, sub: "Trigger-ready, seeking the right framework", dark: false },
 ];
 
+const INCOME_BRACKETS = [
+  { label: "$150K – $300K", pct: 84, sub: "Dominant income segment — budget-ready for residency, incorporation and tax structuring", dark: true },
+  { label: "$300K – $500K", pct: 10, sub: "Ultra-high income with appetite for European CBI programs and structured tax exits", dark: false },
+  { label: "$500K – $1M+", pct: 6, sub: "Prime targets for Malta ENI, Grenada CBI, and premium citizenship-by-investment programs", dark: false },
+];
+
 const FINANCIAL_POWDER = [
   { pct: "2%", desc: "Capital fully allocated — escrow / structure prepared, immediate deployment" },
   { pct: "13%", desc: "Capital-ready (invested + allocated) — the direct deal-conversion segment for partners" },
@@ -367,8 +373,15 @@ export default function FBSPartnerReport() {
           ))}
         </div>
 
-        <div className="caveat">
-          ⚠️ <strong>Income data is unusable.</strong> 89% selected the identical "$150K–$350K" band — that is the form's default, not a real distribution. Financial readiness above is the truer signal; fix the income question before the next cohort.
+        <div className="panel-title" style={{marginTop:"28px",marginBottom:"16px"}}>💵 Income Breakdown</div>
+        <div className="fin-top-grid">
+          {INCOME_BRACKETS.map((f) => (
+            <div key={f.label} className={"fin-card" + (f.dark ? " fin-card--dark" : "")}>
+              <div className="fin-pct">{f.pct}%</div>
+              <div className="fin-lbl">{f.label}</div>
+              <div className="fin-desc">{f.sub}</div>
+            </div>
+          ))}
         </div>
 
         <Takeaway>
@@ -415,7 +428,7 @@ export default function FBSPartnerReport() {
 
       {/* ── 05 MOBILITY STRATEGY & TIMELINE ── */}
       <Sec id="strategy" num="05" badge="🧭 Mobility Strategy & Timeline"
-        title="Two-Thirds Are a Slow Burn — One-Third Are Ready Now"
+        title="34% Are Immediately Actionable — 66% Require a Nurture Play"
         lead="Self-description across all 91 respondents. The critical variable: mobility direction. It determines messaging, partner type, and everything downstream.">
 
         <div className="strat-grid">
@@ -444,19 +457,19 @@ export default function FBSPartnerReport() {
 
         <div className="pipeline-split">
           <div className="ps-card ps-card--hot">
-            <div className="ps-num">31</div>
-            <div className="ps-lbl">Near-term & committed — 34%</div>
-            <div className="ps-sub">3–9 months or fully mobile. Your hot hand-off list.</div>
+            <div className="ps-num">34%</div>
+            <div className="ps-lbl">Near-term & committed</div>
+            <div className="ps-sub">3–9 months out or fully mobile. Your hot hand-off list.</div>
           </div>
           <div className="ps-card">
-            <div className="ps-num">60</div>
-            <div className="ps-lbl">Long-fuse explorers — 66%</div>
+            <div className="ps-num">66%</div>
+            <div className="ps-lbl">Long-fuse explorers</div>
             <div className="ps-sub">9–12 months or not yet ready. The volume nurture engine.</div>
           </div>
         </div>
 
         <Takeaway>
-          Don't sell them a closing. <strong>Sell them a roadmap.</strong> Set partner expectations to "warm and educatable at volume," with a reserved hot tier of ~31 for immediate conversion.
+          Don't sell them a closing. <strong>Sell them a roadmap.</strong> Set partner expectations to "warm and educatable at volume," with a reserved hot tier of 34% for immediate conversion.
         </Takeaway>
       </Sec>
 
