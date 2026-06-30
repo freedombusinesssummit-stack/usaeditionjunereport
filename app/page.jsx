@@ -1057,27 +1057,42 @@ footer p{font-size:13px;color:rgba(255,255,255,.35);}
 /* RESPONSIVE */
 @media(max-width:880px){
   .overview-highlights{grid-template-columns:1fr;}
+  .overview-banner{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:24px 20px;}
   .ob-div{display:none;}
-  .ob-item{padding:12px 0;}
+  .ob-item{padding:16px 8px;border-bottom:1px solid var(--border);}
+  .ob-item:nth-child(n+4){border-bottom:none;}
   .snapshot-grid,.fin-top-grid,.fin-bottom-grid{grid-template-columns:1fr 1fr;}
   .dir-cards,.juris-grid,.pipeline-split{grid-template-columns:1fr;}
   .tier-grid,.strat-grid{grid-template-columns:1fr 1fr;}
   .roles-grid{grid-template-columns:1fr 1fr;}
   .editions-grid{grid-template-columns:1fr;}
-  .hero-stats{flex-direction:column;gap:22px;}
-  .hs-div{width:100%;height:1px;margin:0;}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px 16px;padding-top:28px;}
+  .hs-div{display:none;}
   .hs-item{padding:0;}
   .jr-row{grid-template-columns:28px 28px 1fr 48px;gap:8px;}
   .jr-bar-wrap{display:none;}
   .jr-row .bar-row{margin-bottom:0;}
 }
 @media(max-width:560px){
-  .sec{padding:56px 0;}
-  .hero{padding:56px 0 48px;}
+  .sec{padding:48px 0;}
+  .hero{padding:48px 0 40px;}
+  .hero-inner{padding:0 20px;}
+  .sec-inner{padding:0 20px;}
+  .hero-badges{gap:7px;}
+  .hero-badge{font-size:11.5px;padding:5px 11px;}
+  .hero-cta{flex-direction:column;gap:10px;}
+  .btn-accent,.btn-primary{width:100%;justify-content:center;text-align:center;}
+  .overview-banner{grid-template-columns:1fr 1fr;padding:16px;}
+  .ob-item:nth-child(n+4){border-bottom:1px solid var(--border);}
+  .ob-item:nth-child(n+6){border-bottom:none;}
   .snapshot-grid,.fin-top-grid,.fin-bottom-grid,.tier-grid,.strat-grid,.roles-grid{grid-template-columns:1fr;}
   .intent-row{grid-template-columns:28px 50px 1fr;gap:10px;}
   .roles-banner{flex-direction:column;text-align:center;}
   .ibar-meta{grid-template-columns:24px 24px 1fr 44px;gap:8px;}
+  .juris-ranked{padding:16px 18px;}
+  .jr-row{grid-template-columns:24px 24px 1fr 42px;gap:8px;}
+  .pipeline-split{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:1fr 1fr;gap:20px 12px;}
 }
 @media(prefers-reduced-motion:reduce){
   .sec{transition:none;opacity:1;transform:none;}
